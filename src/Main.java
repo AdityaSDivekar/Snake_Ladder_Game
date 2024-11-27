@@ -26,10 +26,10 @@ public class Main {
 
                 while (playerPosition < WINNING_POSITION) {
                     diceRolls++;
-                    int dice = random.nextInt(6) + 1;
-                    System.out.println("Rolled a " + dice);
+                    int dieRoll = random.nextInt(6) + 1;
+                    System.out.println("Rolled a " + dieRoll);
 
-                    int newPosition = playerPosition + dice;
+                    int newPosition = playerPosition + dieRoll;
 
                     if (newPosition > WINNING_POSITION) {
                         System.out.println("Move exceeds winning position. Player stays at position " + playerPosition);
