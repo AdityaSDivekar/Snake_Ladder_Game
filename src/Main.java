@@ -10,7 +10,7 @@ public class Main {
                 while (playerPosition < WINNING_POSITION) {
                         diceRolls++;
                     int dice = random.nextInt(6) + 1;
-                    System.out.println("Rolled a " + dice);
+                    System.out.println("\nRoll " + diceRolls + ": Rolled a " + dice);
 
                     int option = random.nextInt(3); // Random number between 0 and 2
                     switch (option) {
@@ -40,8 +40,8 @@ public class Main {
                     System.out.println("Player moved to position " + playerPosition);
 
                     }
-        System.out.println("\nCongratulations! Player reached position 100 in " + diceRolls + " dice rolls.");
-
+        System.out.println("\nCongratulations! Player reached position 100.");
+        System.out.println("Total dice rolls to win the game: " + diceRolls);
                 }
             }
 
