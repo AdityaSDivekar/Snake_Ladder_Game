@@ -6,8 +6,6 @@ public class Main {
                 final int START_POSITION = 0;
                 final int WINNING_POSITION = 100;
 
-                // Snakes and ladders configuration
-                int[] snakeAndLadder = new int[101];
 
 
 
@@ -18,7 +16,7 @@ public class Main {
                 System.out.println("Starting the Snake and Ladder game!");
 
                 while (playerPosition < WINNING_POSITION) {
-                    diceRolls++;
+                        diceRolls++;
                     int dice = random.nextInt(6) + 1;
                     System.out.println("Rolled a " + dice);
 
@@ -39,20 +37,24 @@ public class Main {
                         case 2: // Snake
                             int newPositionSnake = playerPosition - dice;
                             if (newPositionSnake < 0) {
-                                newPositionSnake = 0; // Reset to start position
+                                System.out.println("Snake! Moving back below 0. Restarting from position 0.");
+                                playerPosition = START_POSITION;
+                            } else {
+                                System.out.println("Snake! Moving back by " + dice + " steps to position " + newPositionSnake);
+                                playerPosition = newPositionSnake;
                             }
-                            System.out.println("Snake! Moving back by " + dice + " steps to position " + newPositionSnake);
-                            playerPosition = newPositionSnake;
                             break;
+                    }
+                    System.out.println("Player moved to position " + playerPosition);
+
                     }
 
 
+        System.out.println("\nCongratulations! Player reached position 100 in " + diceRolls + " dice rolls.");
 
 
-                    System.out.println("Player moved to position " + playerPosition);
                 }
 
-                System.out.println("Congratulations! Player reached position 100 in " + diceRolls + " dice rolls.");
             }
-        }
+
 
