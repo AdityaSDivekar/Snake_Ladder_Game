@@ -9,14 +9,7 @@ public class Main {
                 // Snakes and ladders configuration
                 int[] snakeAndLadder = new int[101];
 
-                snakeAndLadder[4] = 14;
-                snakeAndLadder[9] = 31;
-                snakeAndLadder[20] = 38;
 
-                snakeAndLadder[17] = 7;
-                snakeAndLadder[54] = 34;
-                snakeAndLadder[62] = 19;
-                snakeAndLadder[87] = 36;
 
                 int playerPosition = START_POSITION;
                 int diceRolls = 0;
@@ -26,26 +19,36 @@ public class Main {
 
                 while (playerPosition < WINNING_POSITION) {
                     diceRolls++;
-                    int dieRoll = random.nextInt(6) + 1;
-                    System.out.println("Rolled a " + dieRoll);
+                    int dice = random.nextInt(6) + 1;
+                    System.out.println("Rolled a " + dice);
 
-                    int newPosition = playerPosition + dieRoll;
-
-                    if (newPosition > WINNING_POSITION) {
-                        System.out.println("Move exceeds winning position. Player stays at position " + playerPosition);
-                        continue;
+                    int option = random.nextInt(3); // Random number between 0 and 2
+                    switch (option) {
+                        case 0: // No Play
+                            System.out.println("No Play! Player stays at position " + playerPosition);
+                            break;
+                        case 1: // Ladder
+                            int newPositionLadder = playerPosition + dice;
+                            if (newPositionLadder > WINNING_POSITION) {
+                                System.out.println("Move exceeds winning position. Player stays at position " + playerPosition);
+                            } else {
+                                System.out.println("Ladder! Moving ahead by " + dice + " steps to position " + newPositionLadder);
+                                playerPosition = newPositionLadder;
+                            }
+                            break;
+                        case 2: // Snake
+                            int newPositionSnake = playerPosition - dice;
+                            if (newPositionSnake < 0) {
+                                newPositionSnake = 0; // Reset to start position
+                            }
+                            System.out.println("Snake! Moving back by " + dice + " steps to position " + newPositionSnake);
+                            playerPosition = newPositionSnake;
+                            break;
                     }
 
-                    if (snakeAndLadder[newPosition] != 0) {
-                        if (newPosition < snakeAndLadder[newPosition]) {
-                            System.out.println("Ladder! Climbing up from " + newPosition + " to " + snakeAndLadder[newPosition]);
-                        } else {
-                            System.out.println("Snake! Sliding down from " + newPosition + " to " + snakeAndLadder[newPosition]);
-                        }
-                        newPosition = snakeAndLadder[newPosition];
-                    }
 
-                    playerPosition = newPosition;
+
+
                     System.out.println("Player moved to position " + playerPosition);
                 }
 
