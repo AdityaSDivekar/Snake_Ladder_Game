@@ -1,20 +1,12 @@
 import java.util.Random;
 public class Main {
     public static void main(String[] args) {
-
-
                 final int START_POSITION = 0;
                 final int WINNING_POSITION = 100;
-
-
-
-
                 int playerPosition = START_POSITION;
                 int diceRolls = 0;
                 Random random = new Random();
-
                 System.out.println("Starting the Snake and Ladder game!");
-
                 while (playerPosition < WINNING_POSITION) {
                         diceRolls++;
                     int dice = random.nextInt(6) + 1;
@@ -48,13 +40,9 @@ public class Main {
                     System.out.println("Player moved to position " + playerPosition);
 
                     }
-
-
         System.out.println("\nCongratulations! Player reached position 100 in " + diceRolls + " dice rolls.");
 
-
                 }
-
             }
 
 
